@@ -1,0 +1,86 @@
+<%-- 
+    Document   : Professionals
+    Created on : Sep 29, 2024, 6:42:24 PM
+    Author     : Nicolas
+--%>
+
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.hu.sprint1.Entities.Professional"%>
+<%@page import="com.mycompany.hu.sprint1.Entities.Professional"%>
+<%@page import="com.mycompany.hu.sprint1.Controllers.ProfessionalController"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Profesionales</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <header class="w-full bg-gray-700 py-4">
+            <h1 class="text-white text-2xl font-bold text-center">MPS Paciente</h1>
+        </header>
+
+        <div class="mx-auto mt-8 max-w-screen-xl flex flex-wrap justify-center">
+            <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100 ">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Nombre
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Apellidos
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Especialidad
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Email
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Telefono
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Ver
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%
+                            ProfessionalController professionalController = new ProfessionalController();
+                            List<Professional> professionals = professionalController.getProfessionalsController();
+                            for (Professional professional : professionals) {
+                        %>
+
+                        <tr class="odd:bg-white even:bg-gray-50 border-b ">
+                            <th scope="row" class="px-6 py-4">
+                                <%= professional.getName()%>
+                            </th>
+                            <td class="px-6 py-4">
+                                <%= professional.getLastname()%>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= professional.getSpeciality()%>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= professional.getEmail()%>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= professional.getPhoneNumber()%>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="SvViewProfessional?id=<%= professional.getId()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
+                            </td>
+                        </tr>
+
+                        <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>
