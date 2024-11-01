@@ -22,11 +22,12 @@ public class EncuestaCategorizacionVO implements Serializable {
     private int ninguna;
     private String categoriaPaciente;
     private int respuestas[] = new int[4];
+    private String descripcionTrastorno;
 
     public EncuestaCategorizacionVO() {
     }
 
-    public EncuestaCategorizacionVO(int id, int estadoAnimo, int situacionEstresante, int relacionComida, int patronSueno, int ninguna, String categoriaPaciente) {
+    public EncuestaCategorizacionVO(int id, int estadoAnimo, int situacionEstresante, int relacionComida, int patronSueno, int ninguna, String categoriaPaciente, String descripcionTrastorno) {
         this.id = id;
         this.estadoAnimo = estadoAnimo;
         this.situacionEstresante = situacionEstresante;
@@ -34,15 +35,17 @@ public class EncuestaCategorizacionVO implements Serializable {
         this.patronSueno = patronSueno;
         this.ninguna = ninguna;
         this.categoriaPaciente = categoriaPaciente;
+        this.descripcionTrastorno = descripcionTrastorno;
     }
 
-    public EncuestaCategorizacionVO(int estadoEmocional, int situacionEstresante, int relacionComida, int patronSueno, int ninguna, String categoriaPaciente) {
-        this.estadoAnimo = estadoEmocional;
+    public EncuestaCategorizacionVO(int estadoAnimo, int situacionEstresante, int relacionComida, int patronSueno, int ninguna, String categoriaPaciente, String descripcionTrastorno) {
+        this.estadoAnimo = estadoAnimo;
         this.situacionEstresante = situacionEstresante;
         this.relacionComida = relacionComida;
         this.patronSueno = patronSueno;
         this.ninguna = ninguna;
         this.categoriaPaciente = categoriaPaciente;
+        this.descripcionTrastorno = descripcionTrastorno;
     }
 
     public int getId() {
@@ -117,6 +120,14 @@ public class EncuestaCategorizacionVO implements Serializable {
         this.patronSueno = patronSueno;
     }
 
+    public String getDescripcionTrastorno() {
+        return descripcionTrastorno;
+    }
+
+    public void setDescripcionTrastorno(String descripcionTrastorno) {
+        this.descripcionTrastorno = descripcionTrastorno;
+    }
+
     public void conteoRespuestas() {
         estadoAnimo = 0;
         situacionEstresante = 0;
@@ -149,66 +160,81 @@ public class EncuestaCategorizacionVO implements Serializable {
 
         if (estadoAnimo >= 2) {
             categoriaPaciente = "Trastornos del Estado de Animo";
+            descripcionTrastorno = "El paciente presenta síntomas de cambios significativos en el estado de ánimo, como tristeza o irritabilidad persistentes que afectan su bienestar diario.";
         }
 
         if (situacionEstresante >= 2) {
             categoriaPaciente = "Trastornos de Ansiedad";
+            descripcionTrastorno = "El paciente experimenta altos niveles de ansiedad o estrés, dificultando su capacidad de afrontamiento en situaciones diarias y afectando su salud mental.";
         }
 
         if (relacionComida >= 2) {
             categoriaPaciente = "Trastornos Alimentarios";
+            descripcionTrastorno = "Hay indicios de una relación disfuncional con la alimentación, incluyendo hábitos alimenticios irregulares o preocupación excesiva por el peso y la imagen corporal.";
         }
 
         if (patronSueno >= 2) {
             categoriaPaciente = "Trastornos del Sueño";
+            descripcionTrastorno = "El paciente manifiesta problemas relacionados con el sueño, como insomnio o falta de descanso adecuado, afectando su energía y concentración.";
         }
 
         if (ninguna >= 2) {
             categoriaPaciente = "Ninguna";
+            descripcionTrastorno = "El paciente no presenta síntomas significativos en las áreas de estado de ánimo, ansiedad, alimentación o sueño que indiquen un trastorno específico.";
         }
 
-        //combinaciones Trastornos estados de animo
+// Combinaciones de Trastornos del Estado de Ánimo
         if (estadoAnimo == 2 && situacionEstresante == 2) {
-            categoriaPaciente = "Trastornos del Estado de Animo y Trastornos de Ansiedad";
+            categoriaPaciente = "Trastornos del estado de ánimo y Trastornos de Ansiedad";
+            descripcionTrastorno = "Síntomas de cambios en el estado de ánimo acompañados de altos niveles de ansiedad, lo que afecta la estabilidad emocional y la capacidad de afrontar el estrés.";
         }
 
         if (estadoAnimo == 2 && relacionComida == 2) {
-            categoriaPaciente = "Trastornos del Estado de Animo y Trastornos Alimentarios";
+            categoriaPaciente = "Trastornos del estado de ánimo y Trastornos Alimentarios";
+            descripcionTrastorno = "El paciente muestra alteraciones en el estado de ánimo y en su relación con la alimentación, lo que podría incluir comportamientos compulsivos o restrictivos.";
         }
 
         if (estadoAnimo == 2 && patronSueno == 2) {
-            categoriaPaciente = "Trastornos del Estado de Animo y Trastornos del Sueño";
+            categoriaPaciente = "Trastornos del estado de ánimo y Trastornos del Sueño";
+            descripcionTrastorno = "Cambios en el estado de ánimo acompañados de problemas en el sueño, afectando el descanso y aumentando los síntomas de cansancio o irritabilidad.";
         }
 
         if (estadoAnimo == 2 && ninguna == 2) {
-            categoriaPaciente = "Trastornos del Estado de Animo";
+            categoriaPaciente = "Trastornos del estado de ánimo";
+            descripcionTrastorno = "El paciente presenta síntomas en su estado de ánimo, sin signos significativos de ansiedad, alimentación o problemas de sueño.";
         }
 
-        //Combinaciones Trastornos ansiedad 
+// Combinaciones de Trastornos de Ansiedad
         if (situacionEstresante == 2 && relacionComida == 2) {
             categoriaPaciente = "Trastornos de Ansiedad y Trastornos Alimentarios";
+            descripcionTrastorno = "El paciente experimenta altos niveles de ansiedad que se ven reflejados en su relación con la alimentación, generando posibles conductas alimenticias no saludables.";
         }
 
-        if (situacionEstresante == 2 && patronSueno >= 2) {
+        if (situacionEstresante == 2 && patronSueno == 2) {
             categoriaPaciente = "Trastornos de Ansiedad y Trastornos del Sueño";
+            descripcionTrastorno = "La ansiedad elevada se combina con dificultades para conciliar el sueño o mantenerlo, impactando el bienestar general del paciente.";
         }
 
-        if (patronSueno == 2 && ninguna == 2) {
+        if (situacionEstresante == 2 && ninguna == 2) {
             categoriaPaciente = "Trastornos de Ansiedad";
+            descripcionTrastorno = "El paciente presenta síntomas de ansiedad sin complicaciones significativas en la alimentación, estado de ánimo o sueño.";
         }
 
-        //Combinaciones Trastornos Alimentarios 
+// Combinaciones de Trastornos Alimentarios
         if (relacionComida == 2 && patronSueno == 2) {
             categoriaPaciente = "Trastornos Alimentarios y Trastornos del Sueño";
+            descripcionTrastorno = "El paciente muestra patrones alimenticios inestables y problemas de sueño, lo que puede llevar a efectos negativos en la salud física y mental.";
         }
 
         if (relacionComida == 2 && ninguna == 2) {
             categoriaPaciente = "Trastornos Alimentarios";
+            descripcionTrastorno = "Indicios de una relación disfuncional con la comida, sin problemas significativos de sueño, estado de ánimo o ansiedad.";
         }
 
-        //Combinaciones Trastornos del sueño
+// Combinaciones de Trastornos del Sueño
         if (patronSueno == 2 && ninguna == 2) {
             categoriaPaciente = "Trastornos del Sueño";
+            descripcionTrastorno = "El paciente presenta dificultades para mantener un patrón de sueño saludable, sin otros síntomas significativos en alimentación, estado de ánimo o ansiedad.";
         }
 
         System.out.println("Categoria: " + categoriaPaciente);

@@ -27,23 +27,26 @@ public class Trastorno implements Serializable {
     private String professional_id;
     private String nombreDelTranstorno;
     private String especialidadProfesional;
+    private String description;
 
     public Trastorno() {
     }
 
-    public Trastorno(int id, String patient_id, String professional_id, String nombreDelTranstorno, String especialidadProfesional) {
+    public Trastorno(int id, String patient_id, String professional_id, String nombreDelTranstorno, String especialidadProfesional, String description) {
         this.id = id;
         this.patient_id = patient_id;
         this.professional_id = professional_id;
         this.nombreDelTranstorno = nombreDelTranstorno;
         this.especialidadProfesional = especialidadProfesional;
+        this.description = description;
     }
 
-    public Trastorno(String patient_id, String professional_id, String nombreDelTranstorno, String especialidadProfesional) {
+    public Trastorno(String patient_id, String professional_id, String nombreDelTranstorno, String especialidadProfesional, String description) {
         this.patient_id = patient_id;
         this.professional_id = professional_id;
         this.nombreDelTranstorno = nombreDelTranstorno;
         this.especialidadProfesional = especialidadProfesional;
+        this.description = description;
     }
 
     public int getId() {
@@ -84,6 +87,14 @@ public class Trastorno implements Serializable {
 
     public void setEspecialidadProfesional(String especialidadProfesional) {
         this.especialidadProfesional = especialidadProfesional;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

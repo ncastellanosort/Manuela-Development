@@ -61,29 +61,28 @@ public class SvEncuestaCategorizacion extends HttpServlet {
 
         encuestaCatego.conteoRespuestas();
         encuestaCatego.categorizarArea();
-        
+
         System.out.println(encuestaCatego.getCategoriaPaciente());
-        
+        // System.out.println(encuestaCatego.getDescripcionTrastorno());
+
         Patient paciente = (Patient) request.getSession().getAttribute("currentPatient");
         int IDcurrentProfessional = 0;
 
         List<Professional> listaProfessionales = professionalController.getProfessionalsController();
 
         for (Professional profesional : listaProfessionales) {
+
             if (profesional.getSpeciality().equals(encuestaCatego.getCategoriaPaciente())) {
                 IDcurrentProfessional = profesional.getId();
-                trastornoController.crearTrastornoController(new Trastorno(paciente.getIdentificationNumber(), profesional.getIdentificationNumber(), encuestaCatego.getCategoriaPaciente(), profesional.getSpeciality()));
-            }else{
+                trastornoController.crearTrastornoController(new Trastorno(paciente.getIdentificationNumber(), profesional.getIdentificationNumber(), encuestaCatego.getCategoriaPaciente(), profesional.getSpeciality(), encuestaCatego.getDescripcionTrastorno()));
+            } else {
                 response.sendRedirect("PatientMain.jsp");
             }
         }
-        
+
         // EL PROGRAMA SE ESTA CONFUNDIENDO CON 2 DIFERENTES PROFESIONALES, 
         // CREAR UNA TABLA DONDE ESTAN TODOS LOS PROFESIONALES Y OTRA TABLA DONDE ESTAN SOLOS CON
         // LOS QUE HA TENIDO SESIONES
-        
-        
-        
         HttpSession miSesion = request.getSession();
 
         Professional newCurrentProfessional = professionalController.getProfessionalByIdController(IDcurrentProfessional);
@@ -92,7 +91,7 @@ public class SvEncuestaCategorizacion extends HttpServlet {
 
         miSesion.setAttribute("encuestaCatego", encuestaCatego);
 
-        response.sendRedirect("ContactProfessional.jsp");
+        response.sendRedirect("TrastornosDescription.jsp");
 
         /*
         System.out.println("estAnimo: "+ estadoAnimo);
