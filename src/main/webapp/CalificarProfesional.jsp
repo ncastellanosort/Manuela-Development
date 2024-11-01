@@ -6,6 +6,7 @@
 
 <%@page import="com.mycompany.hu.sprint1.Entities.Professional"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="SidebarPatient.jsp"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -48,53 +49,54 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-custom">
-            <span class="navbar-brand mb-0 h1">MPS Paciente</span>
-        </nav>
-        <%
+        <div class="p-4 sm:ml-64">
 
-            Professional professional = (Professional) request.getSession().getAttribute("actualProfessional");
 
-        %>
-        <div class="container">
-            <div class="profile-section text-center">
-                <h2>Tu profesional asignado es</h2>
-                <h1><%= professional.getName()%></h1>
-                <p><strong><%= professional.getSpeciality()%></strong></p>
-                <div class="profile-img mb-3">
-                    <img src="${pageContext.request.contextPath}/imagenes/Icon_Calificar.png" alt="Icono de Calificación" style="width: 150px; height: 150px;">
-                </div>
+            <%
 
-                <form action="SvCalificarProfesional" method="POST">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="nota" class="form-label">Deja una nota para la calificación del profesional</label>
-                            <textarea class="form-control" id="nota" name="nota" rows="4" placeholder="Ingresa la nota..."></textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="puntuacion" class="form-label">Dale una puntuación de 1 a 5</label>
-                            <input type="number" class="form-control" id="puntuacion" name="puntuacion" min="1" max="5" value="3">
-                        </div>
+                Professional professional = (Professional) request.getSession().getAttribute("actualProfessional");
+
+            %>
+            <div class="container">
+                <div class="profile-section text-center">
+                    <h2>Tu profesional asignado es</h2>
+                    <h1><%= professional.getName()%></h1>
+                    <p><strong><%= professional.getSpeciality()%></strong></p>
+                    <div class="profile-img mb-3">
+                        <img src="${pageContext.request.contextPath}/imagenes/Icon_Calificar.png" alt="Icono de Calificación" style="width: 150px; height: 150px;">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Calificar</button>
-                </form>
+                    <form action="SvCalificarProfesional" method="POST">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="nota" class="form-label">Deja una nota para la calificación del profesional</label>
+                                <textarea class="form-control" id="nota" name="nota" rows="4" placeholder="Ingresa la nota..."></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="puntuacion" class="form-label">Dale una puntuación de 1 a 5</label>
+                                <input type="number" class="form-control" id="puntuacion" name="puntuacion" min="1" max="5" value="3">
+                            </div>
+                        </div>
 
-                <%                    // Código del lado del servidor para manejar la calificación
-                    String nota = request.getParameter("nota");
-                    String puntuacion = request.getParameter("puntuacion");
+                        <button type="submit" class="btn btn-primary">Calificar</button>
+                    </form>
 
-                    if (nota != null && puntuacion != null) {
-                        // Lógica para guardar la nota y puntuación
-                %>
-                <div class="alert alert-success mt-3" role="alert">
-                    ¡Calificación realizada con éxito! <br>
-                    Puntuación: <%= puntuacion%> <br>
-                    Nota: <%= nota%>
+                    <%                    // Código del lado del servidor para manejar la calificación
+                        String nota = request.getParameter("nota");
+                        String puntuacion = request.getParameter("puntuacion");
+
+                        if (nota != null && puntuacion != null) {
+                            // Lógica para guardar la nota y puntuación
+%>
+                    <div class="alert alert-success mt-3" role="alert">
+                        ¡Calificación realizada con éxito! <br>
+                        Puntuación: <%= puntuacion%> <br>
+                        Nota: <%= nota%>
+                    </div>
+                    <%
+                        }
+                    %>
                 </div>
-                <%
-                    }
-                %>
             </div>
         </div>
 

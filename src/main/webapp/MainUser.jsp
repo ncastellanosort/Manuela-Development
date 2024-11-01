@@ -12,7 +12,6 @@
         <title>Inicio</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <style>
-
             .main-container {
                 margin-top: 60px;
             }
@@ -25,12 +24,33 @@
             .info-left {
                 text-align: left;
                 margin-left: 2rem;
-
             }
 
-            .title-card{
+            .title-card {
                 font-size: 25px;
+                color: black;
+            }
 
+            .link-title {
+                text-decoration: none;
+                outline: none;
+            }
+
+            .title-card:hover {
+                color: cadetblue;
+            }
+
+            .title-card:active {
+                color: #0e6383;
+            }
+
+            .text-content {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 5; /* Limita a 3 líneas /
+                max-height: 7.5em; / Ajusta según el tamaño de línea */
             }
         </style>
     </head>
@@ -63,85 +83,59 @@
 
         <div class="p-4 sm:ml-64">
             <div class="main-container d-flex flex-column align-items-center">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
+                <div class="main-container d-flex flex-column align-items-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-5 info-left">
+                                    <a class="link-title" href="ContenidoArticulo.jsp">
+                                        <p class="title-card mb-1"><strong>Nombre del artículo</strong></p>
+                                    </a>
+                                    <p class="mb-1">Nombre del autor</p>
+                                    <p class="mb-1">DD/MM/AAAA</p>
+                                </div>
 
-                            <div class="col-5 info-left">
-                                <p class="title-card mb-1"><strong>Nombre del artículo </strong></p>
-                                <p class="mb-1">Nombre del autor</p>
-                                <p class="mb-1">DD/MM/AAAA</p>
-                            </div>
-
-                            <div class="col-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-5 info-left">
-                                <p class="title-card mb-1"><strong>Nombre del artículo </strong></p>
-                                <p class="mb-1">Nombre del autor</p>
-                                <p class="mb-1">DD/MM/AAAA</p>
-                            </div>
-
-                            <div class="col-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum.</p>
+                                <div class="col-6">
+                                    <p class="text-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum. Duis efficitur pulvinar ips. </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-5 info-left">
+                                    <a class="link-title" href="ContenidoArticulo.jsp">
+                                        <p class="title-card mb-1"><strong>Nombre del artículo</strong></p>
+                                    </a>
+                                    <p class="mb-1">Nombre del autor</p>
+                                    <p class="mb-1">DD/MM/AAAA</p>
+                                </div>
 
-                            <div class="col-5 info-left">
-                                <p class="title-card mb-1"><strong>Nombre del artículo </strong></p>
-                                <p class="mb-1">Nombre del autor</p>
-                                <p class="mb-1">DD/MM/AAAA</p>
-                            </div>
-
-                            <div class="col-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col-5 info-left">
-                                <p class="title-card mb-1"><strong>Nombre del artículo </strong></p>
-                                <p class="mb-1">Nombre del autor</p>
-                                <p class="mb-1">DD/MM/AAAA</p>
-                            </div>
-
-                            <div class="col-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum.</p>
+                                <div class="col-6">
+                                    <p class="text-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum. Duis efficitur pulvinar ips. </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-5 info-left">
+                                    <a class="link-title" href="ContenidoArticulo.jsp">
+                                        <p class="title-card mb-1"><strong>Nombre del artículo</strong></p>
+                                    </a>
+                                    <p class="mb-1">Nombre del autor</p>
+                                    <p class="mb-1">DD/MM/AAAA</p>
+                                </div>
 
-                            <div class="col-5 info-left">
-                                <p class="title-card mb-1"><strong>Nombre del artículo </strong></p>
-                                <p class="mb-1">Nombre del autor</p>
-                                <p class="mb-1">DD/MM/AAAA</p>
-                            </div>
-
-                            <div class="col-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum.</p>
+                                <div class="col-6">
+                                    <p class="text-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum. Duis efficitur pulvinar ips. </p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

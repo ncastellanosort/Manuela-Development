@@ -3,6 +3,7 @@
 <%@page import="com.mycompany.hu.sprint1.Entities.EncuestaDiariaVO"%>
 <%@page import="com.mycompany.hu.sprint1.Controllers.ControladoraLogica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="SidebarPatient.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,52 +44,49 @@
 
     <body>
 
-        <nav class="navbar navbar-custom">
-            <div class="container-fluid">
-                <a class="navbar-brand mx-auto" href="#">MPS Paciente</a> 
+        <div class="p-4 sm:ml-64">
+
+            <!-- Div para centrar la tabla -->
+            <div class="container center-page">
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Estado Animo</th>
+                            <th scope="col">Nivel Energia</th>
+                            <th scope="col">Estres/Ansiedad</th>
+                            <th scope="col">Balance General</th>
+                            <th scope="col">Recomendacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%
+
+                            int cont = 1;
+                            EncuestaDiariaController encuestaDiariaController = new EncuestaDiariaController();
+                            List<EncuestaDiariaVO> encuestas = (List) encuestaDiariaController.getEncuestasDiariasController();
+                            for (EncuestaDiariaVO encuesta : encuestas) {
+                                System.out.println(encuesta.getEstadoAnimo() + " , " + encuesta.getEstresAnsiedad());
+
+
+                        %>
+                        <tr>
+                            <th scope="row"><%=cont%></th>
+                            <td><%=encuesta.getEstadoAnimo()%></td>
+                            <td><%=encuesta.getNivelEnergia()%></td>
+                            <td><%=encuesta.getEstresAnsiedad()%></td>
+                            <td class="texto-largo"><%=encuesta.getBalanceGeneral()%></td>
+                            <td class="texto-largo"><%=encuesta.getRecomendacion()%></td>
+                        </tr>
+                        <%
+                                cont++;
+                            }
+                        %>
+
+                    </tbody>
+                </table>
             </div>
-        </nav>
-
-        <!-- Div para centrar la tabla -->
-        <div class="container center-page">
-            <table class="table table-hover text-center">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Estado Animo</th>
-                        <th scope="col">Nivel Energia</th>
-                        <th scope="col">Estres/Ansiedad</th>
-                        <th scope="col">Balance General</th>
-                        <th scope="col">Recomendacion</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <%
-
-                        int cont = 1;
-                        EncuestaDiariaController encuestaDiariaController = new EncuestaDiariaController();
-                        List<EncuestaDiariaVO> encuestas = (List) encuestaDiariaController.getEncuestasDiariasController();
-                        for (EncuestaDiariaVO encuesta : encuestas) {
-                            System.out.println(encuesta.getEstadoAnimo() + " , " + encuesta.getEstresAnsiedad());
-
-
-                    %>
-                    <tr>
-                        <th scope="row"><%=cont%></th>
-                        <td><%=encuesta.getEstadoAnimo()%></td>
-                        <td><%=encuesta.getNivelEnergia()%></td>
-                        <td><%=encuesta.getEstresAnsiedad()%></td>
-                        <td class="texto-largo"><%=encuesta.getBalanceGeneral()%></td>
-                        <td class="texto-largo"><%=encuesta.getRecomendacion()%></td>
-                    </tr>
-                    <%
-                            cont++;
-                        }
-                    %>
-
-                </tbody>
-            </table>
         </div>
 
     </body>

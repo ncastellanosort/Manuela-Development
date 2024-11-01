@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="SidebarPatient.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -55,68 +56,65 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-custom">
-            <div class="container-fluid">
-                <a class="navbar-brand mx-auto" href="#">MPS Paciente</a> 
-            </div>
-        </nav>
-
-        <div class="container mt-4">
-            <h1 class="text-center">Encuesta Del Dia</h1>
-            <h2 class="text-center">24/09/2024</h2>
+        <div class="p-4 sm:ml-64">
+            <div class="container mt-4">
+                <h1 class="text-center">Encuesta Del Dia</h1>
+                <h2 class="text-center">24/09/2024</h2>
 
 
-            <form action="SvEncuestaDiaria" method="POST">
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="survey-label">1. ¿Cómo describirías tu estado de ánimo hoy?</label>
-                            <select class="form-select" aria-label="Pregunta 1" name="EstadoAnimo">
-                                <option selected>--SELECCIONE UNA OPCION--</option>
-                                <option value="Bueno">Bueno</option>
-                                <option value="Neutro">Neutro</option>
-                                <option value="Malo">Malo</option>
-                            </select>
+                <form action="SvEncuestaDiaria" method="POST">
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="survey-label">1. ¿Cómo describirías tu estado de ánimo hoy?</label>
+                                <select class="form-select" aria-label="Pregunta 1" name="EstadoAnimo">
+                                    <option selected>--SELECCIONE UNA OPCION--</option>
+                                    <option value="Bueno">Bueno</option>
+                                    <option value="Neutro">Neutro</option>
+                                    <option value="Malo">Malo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="survey-label">2. ¿Qué nivel de energía tuviste durante el día?</label>
+                                <select class="form-select" aria-label="Pregunta 2" name="NivelEnergia">
+                                    <option selected>--SELECCIONE UNA OPCION--</option>      
+                                    <option value="Alta">Alta</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Baja">Baja</option>    
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="survey-label">2. ¿Qué nivel de energía tuviste durante el día?</label>
-                            <select class="form-select" aria-label="Pregunta 2" name="NivelEnergia">
-                                <option selected>--SELECCIONE UNA OPCION--</option>      
-                                <option value="Alta">Alta</option>
-                                <option value="Normal">Normal</option>
-                                <option value="Baja">Baja</option>    
-                            </select>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="survey-label">3. ¿Te sentiste estresado o ansioso hoy?</label>
+                                <select class="form-select" aria-label="Pregunta 3" name="EstresAnsiedad">
+                                    <option selected>--SELECCIONE UNA OPCION--</option>
+                                    <option value="Todo el dia">Todo el dia</option>
+                                    <option value="A veces">A veces</option>
+                                    <option value="Nunca">Nunca</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="survey-label">3. ¿Te sentiste estresado o ansioso hoy?</label>
-                            <select class="form-select" aria-label="Pregunta 3" name="EstresAnsiedad">
-                                <option selected>--SELECCIONE UNA OPCION--</option>
-                                <option value="Todo el dia">Todo el dia</option>
-                                <option value="A veces">A veces</option>
-                                <option value="Nunca">Nunca</option>
-                            </select>
-                        </div>
+                    <div class="text-center div-submit">
+                        <button type="submit" class="btn btn-custom">Submit</button>
                     </div>
-                </div>
-
-                <div class="text-center div-submit">
-                    <button type="submit" class="btn btn-custom">Submit</button>
-                </div>
-            </form>
-
-            <div class="text-center">
-                <form action="SvEncuestaDiaria" method="GET">
-                    <button type="submit" class="btn btn-custom">Ver Encuestas Realizadas</button>
                 </form>
 
+                <div class="text-center">
+                    <form action="SvEncuestaDiaria" method="GET">
+                        <button type="submit" class="btn btn-custom">Ver Encuestas Realizadas</button>
+                    </form>
+
+                </div>
             </div>
         </div>
+
     </body>
 </html>
