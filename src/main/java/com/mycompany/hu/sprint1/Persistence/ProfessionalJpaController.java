@@ -140,6 +140,19 @@ public class ProfessionalJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public Professional getByCedula(String cedula) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNativeQuery("SELECT * FROM professional WHERE identificationnumber = ?", Professional.class);
+            query.setParameter(1, cedula);
+            return (Professional) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
 
     public int getProfessionalCount() {
         EntityManager em = getEntityManager();

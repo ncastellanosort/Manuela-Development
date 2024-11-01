@@ -31,4 +31,8 @@ public class ProfessionalPersistenceController {
         return professionalJpaController.findProfessional(id);
     }
 
+    public Professional getProfessionalCedula(String cedula) {
+        return professionalJpaController.getByCedula(cedula);
+    }
+
 }

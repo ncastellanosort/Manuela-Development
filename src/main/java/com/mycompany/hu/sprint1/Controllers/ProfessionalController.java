@@ -32,4 +32,8 @@ public class ProfessionalController {
         return professionalPersistenceController.getProfessionalById(id);
     }
 
+    public Professional getProfessionalCedula(String cedula) {
+        return professionalPersistenceController.getProfessionalCedula(cedula);
+    }
+
 }

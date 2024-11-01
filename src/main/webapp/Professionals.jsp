@@ -4,6 +4,11 @@
     Author     : Nicolas
 --%>
 
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mycompany.hu.sprint1.Entities.Patient"%>
+<%@page import="com.mycompany.hu.sprint1.Entities.Trastorno"%>
+<%@page import="com.mycompany.hu.sprint1.Controllers.TrastornoController"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.hu.sprint1.Entities.Professional"%>
 <%@page import="com.mycompany.hu.sprint1.Entities.Professional"%>
@@ -51,33 +56,56 @@
 
                             <%
                                 ProfessionalController professionalController = new ProfessionalController();
-                                List<Professional> professionals = professionalController.getProfessionalsController();
-                                for (Professional professional : professionals) {
+                                Patient currentP = (Patient) request.getSession().getAttribute("currentPatient");
+
+                                TrastornoController trastornoController = new TrastornoController();
+                                List<Trastorno> trastornos = trastornoController.getTrastornosController();
+
+                                HashSet<Integer> idsNoRepetidos = new HashSet<>();
+
+                                ArrayList<Professional> profesionalesActivos = new ArrayList<>();
+
+                                for (Trastorno trastorno : trastornos) {
+
+                                    if (trastorno.getPatient_id().equals(currentP.getIdentificationNumber())) {
+
+                                        idsNoRepetidos.add(Integer.parseInt(trastorno.getProfessional_id()));
+
+                                    }
+                                }
+
+                                for (Integer id : idsNoRepetidos) {
+                                    Professional p = professionalController.getProfessionalCedula(String.valueOf(id));
+                                    profesionalesActivos.add(p);
+                                }
+
+                                for (Professional p : profesionalesActivos) {
+                                    System.out.println(p.getName());
+
+
                             %>
 
                             <tr class="odd:bg-white even:bg-gray-50 border-b ">
                                 <th scope="row" class="px-6 py-4">
-                                    <%= professional.getName()%>
+                                    <%=p.getName()%>
                                 </th>
                                 <td class="px-6 py-4">
-                                    <%= professional.getLastname()%>
+                                    <%=p.getLastname()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%= professional.getSpeciality()%>
+                                    <%=p.getSpeciality()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%= professional.getEmail()%>
+                                    <%=p.getEmail()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%= professional.getPhoneNumber()%>
+                                    <%=p.getPhoneNumber()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="SvViewProfessional?id=<%= professional.getId()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
+                                    <a href="SvViewProfessional?id=<%=p.getId()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
                                 </td>
                             </tr>
-
-                            <%}%>
-
+                            <%                                }%>
                         </tbody>
                     </table>
                 </div>

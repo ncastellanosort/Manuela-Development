@@ -5,6 +5,7 @@
 package com.mycompany.hu.sprint1.Persistence;
 
 import com.mycompany.hu.sprint1.Entities.Trastorno;
+import java.util.List;
 
 /**
  *
@@ -13,8 +14,12 @@ import com.mycompany.hu.sprint1.Entities.Trastorno;
 public class TrastornoPersistenceController {
 
     TrastornoJpaController trastornoJpaController = new TrastornoJpaController();
-    
+
     public void crearTrastorno(Trastorno trastorno) {
         trastornoJpaController.create(trastorno);
+    }
+
+    public List<Trastorno> traerTrastornos() {
+        return trastornoJpaController.findTrastornoEntities();
     }
 }
