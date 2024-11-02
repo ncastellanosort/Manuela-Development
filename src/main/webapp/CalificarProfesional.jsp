@@ -13,85 +13,48 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calificar Profesional</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <style>
-            .navbar-custom {
-                background-color: #2e3a49; /* Color gris oscuro */
-                color: white;
-                display: flex;
-                justify-content: center; /* Centra horizontalmente */
-                align-items: center; /* Centra verticalmente */
-                height: 60px; /* Ajusta la altura de la barra */
-            }
-            .navbar-custom .navbar-brand {
-                color: white;
-                font-size: 24px;
-                margin: 0; /* Remueve el margen para asegurar que esté centrado */
-            }
-            body {
-                background-color: #f8f9fa;
-            }
-            .container {
-                margin-top: 50px;
-            }
-            .profile-section {
-                background-color: #e9ecef;
-                padding: 30px;
-                border-radius: 10px;
-            }
-            .profile-img {
-                font-size: 80px;
-                color: gray;
-            }
-            .form-group textarea {
-                resize: none;
-            }
-        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
+    <body class="bg-gray-100 overflow-hidden">
+
         <div class="p-4 sm:ml-64">
-
-
-            <%
-
+            <% 
                 Professional professional = (Professional) request.getSession().getAttribute("actualProfessional");
-
             %>
-            <div class="container">
-                <div class="profile-section text-center">
-                    <h2>Tu profesional asignado es</h2>
-                    <h1><%= professional.getName()%></h1>
-                    <p><strong><%= professional.getSpeciality()%></strong></p>
-                    <div class="profile-img mb-3">
-                        <img src="${pageContext.request.contextPath}/imagenes/Icon_Calificar.png" alt="Icono de Calificación" style="width: 150px; height: 150px;">
+            <div class="container mx-auto">
+                <div class="bg-gray-200 p-8 rounded-lg text-center shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4">Tu profesional asignado es</h2>
+                    <h1 class="text-3xl font-bold"><%= professional.getName()%></h1>
+                    <p class="text-xl font-medium text-gray-700"><%= professional.getSpeciality()%></p>
+                    <div class="flex justify-center mt-6 mb-8">
+                        <img src="${pageContext.request.contextPath}/imagenes/Icon_Calificar.png" alt="Icono de Calificación" class="w-36 h-36">
                     </div>
 
-                    <form action="SvCalificarProfesional" method="POST">
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="nota" class="form-label">Deja una nota para la calificación del profesional</label>
-                                <textarea class="form-control" id="nota" name="nota" rows="4" placeholder="Ingresa la nota..."></textarea>
+                    <form action="SvCalificarProfesional" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nota" class="block text-left text-gray-700 font-semibold mb-2">Deja una nota para la calificación del profesional</label>
+                                <textarea class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-200" id="nota" name="nota" rows="4" placeholder="Ingresa la nota..."></textarea>
                             </div>
-                            <div class="col-md-6">
-                                <label for="puntuacion" class="form-label">Dale una puntuación de 1 a 5</label>
-                                <input type="number" class="form-control" id="puntuacion" name="puntuacion" min="1" max="5" value="3">
+                            <div>
+                                <label for="puntuacion" class="block text-left text-gray-700 font-semibold mb-2">Dale una puntuación de 1 a 5</label>
+                                <input type="number" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-200" id="puntuacion" name="puntuacion" min="1" max="5" value="3">
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Calificar</button>
+                        <button type="submit" class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 focus:outline-none">Calificar</button>
                     </form>
 
-                    <%                    // Código del lado del servidor para manejar la calificación
+                    <%
                         String nota = request.getParameter("nota");
                         String puntuacion = request.getParameter("puntuacion");
 
                         if (nota != null && puntuacion != null) {
-                            // Lógica para guardar la nota y puntuación
-%>
-                    <div class="alert alert-success mt-3" role="alert">
+                    %>
+                    <div class="mt-6 p-4 bg-green-100 border border-green-400 rounded-lg text-green-700">
                         ¡Calificación realizada con éxito! <br>
-                        Puntuación: <%= puntuacion%> <br>
-                        Nota: <%= nota%>
+                        Puntuación: <%= puntuacion %> <br>
+                        Nota: <%= nota %>
                     </div>
                     <%
                         }
@@ -100,6 +63,5 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

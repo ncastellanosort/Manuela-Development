@@ -8,6 +8,7 @@
 <%@page import="com.mycompany.hu.sprint1.Controllers.PatientController"%>
 <%@page import="com.mycompany.hu.sprint1.Controllers.ProfessionalController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="SidebarMainUser.jsp"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -20,11 +21,9 @@
         Controller controller = new Controller();
     %>
     <body class="bg-gray-100 flex flex-col items-center min-h-screen">
-        <header class="w-full bg-gray-700 py-4">
-            <h1 class="text-white text-2xl font-bold text-center">MPS</h1>
-        </header>
 
-        <div class="flex-grow text-center flex flex-col justify-center items-center">
+
+        <div class="flex-grow text-center flex flex-col justify-center items-center sm:ml-64">
             <h2 class="text-2xl font-semibold mb-8">Bienvenido, ¿Cómo quieres iniciar sesión?</h2>
 
             <div class="flex justify-center space-x-16">
@@ -52,6 +51,7 @@
                 </div>
             </div>
         </div>
+
     </body>
 
 </html>
