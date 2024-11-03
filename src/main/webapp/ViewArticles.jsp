@@ -1,9 +1,3 @@
-<%-- 
-    Document   : ViewArticles
-    Created on : Nov 2, 2024, 8:54:24 PM
-    Author     : Nicolas
---%>
-
 <%@page import="java.net.URL"%>
 <%@page import="java.net.HttpURLConnection"%>
 <%@page import="java.util.Scanner"%>
@@ -29,7 +23,6 @@
     <body>
         <div class="p-4 sm:ml-64">
             <div class="flex flex-col items-center">
-
                 <h2 class="text-3xl font-bold text-gray-900 mb-6">Articulos</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -46,7 +39,6 @@
                             System.out.println("Algo paso");
                         } else {
                             StringBuilder stringBuilder = new StringBuilder();
-
                             Scanner scanner = new Scanner(url.openStream());
 
                             while (scanner.hasNext()) {
@@ -57,7 +49,15 @@
 
                             JSONObject data = new JSONObject(String.valueOf(stringBuilder));
 
-                            for (int i = 0; i < 15; i++) {
+                            for (int i = 0; i < 14; i++) {
+                                JSONObject article = data.getJSONArray("articles").getJSONObject(i);
+
+                                if (article.getString("title").equals("[Removed]")
+                                        || !article.has("author") || !article.has("urlToImage")
+                                        || article.isNull("author") || article.isNull("urlToImage")) {
+                                    continue;
+                                }
+                                if (article.get("author") instanceof String) {
                     %>
                     <div class="bg-white shadow-lg rounded-lg p-6 w-full transition transform hover:scale-95 duration-300">
                         <div class="flex items-start space-x-6">
@@ -86,11 +86,12 @@
                             </div>
                         </div>
                     </div>
-                    <% }
-                        }%>
+                    <%
+                                }
+                            }
+                        }
+                    %>
                 </div>
-
-
             </div>
         </div>
     </body>
