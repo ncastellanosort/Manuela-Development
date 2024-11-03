@@ -9,8 +9,9 @@
 <%@page import="java.util.Scanner"%>
 <%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@include file="SidebarPatient.jsp"%>
+<%@include file="ViewArticles.jsp"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
