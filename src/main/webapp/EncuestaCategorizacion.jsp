@@ -9,7 +9,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <style>
             .btn-custom {
-                background-color: #7A7A7A; /* Tono de gris */
+                background-color: #7A7A7A; 
                 color: white;
             }
             .btn-custom:hover {

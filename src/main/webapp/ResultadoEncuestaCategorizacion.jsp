@@ -12,19 +12,19 @@
                 height: 100%;
                 margin: 0;
                 padding: 0;
-                overflow: hidden; /* Evita el scroll */
+                overflow: hidden; 
             }
 
             .navbar-custom {
-                background-color: #7A7A7A; /* Un tono de gris */
+                background-color: #7A7A7A; 
             }
 
             .full-height {
-                height: calc(100vh - 56px); /* Ajusta la altura total menos la altura del navbar */
+                height: calc(100vh - 56px); 
                 display: flex;
-                justify-content: center; /* Centra horizontalmente */
-                align-items: center;    /* Centra verticalmente */
-                text-align: center;     /* Alinea el texto al centro */
+                justify-content: center; 
+                align-items: center;   
+                text-align: center;    
             }
         </style>
     </head>

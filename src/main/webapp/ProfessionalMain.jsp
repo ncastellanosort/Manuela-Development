@@ -4,6 +4,10 @@
     Author     : Nicolas
 --%>
 
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.util.Scanner"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="SidebarProfessional.jsp"%>
 <!DOCTYPE html>

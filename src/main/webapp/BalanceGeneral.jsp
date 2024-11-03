@@ -10,16 +10,16 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <style>
             .navbar-custom {
-                background-color: rgb(55 65 81); /* Un tono de gris */
+                background-color: rgb(55 65 81);
                 display: flex;
-                justify-content: center; /* Centra horizontalmente */
-                align-items: center; /* Centra verticalmente */
+                justify-content: center; 
+                align-items: center;
             }
 
             .navbar-custom .navbar-brand {
                 color: white;
                 font-size: 24px;
-                margin: 0; /* Remueve el margen para asegurar que esté centrado */
+                margin: 0; 
             }
 
             .center-content {
@@ -27,23 +27,23 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                height: auto; /* Dejar que el contenido determine la altura */
+                height: auto; 
                 text-align: center;
                 margin-bottom: 2vh;
-                margin-top: 10vh; /* Ajusta este valor según tu preferencia */
+                margin-top: 10vh; 
             }
 
 
 
 
             .centered-div {
-                margin-bottom: 5vh; /* Controla el espacio debajo del div */
+                margin-bottom: 5vh; 
 
 
             }
 
             .centered-div h4 {
-                font-weight: 400; /* Ajusta el grosor del texto, 400 es normal, 700 es bold */
+                font-weight: 400; 
             }
 
             .container{
@@ -52,7 +52,7 @@
             }
 
             .custom-div {
-                border: 1px solid #ccc; /* Borde opcional para visualización */
+                border: 1px solid #ccc; 
                 padding: 20px;
                 text-align: center;
                 min-height: 20vh;

@@ -8,16 +8,16 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <style>
             .navbar-custom {
-                background-color: rgb(55 65 81); /* Un tono de gris */
+                background-color: rgb(55 65 81); 
                 display: flex;
-                justify-content: center; /* Centra horizontalmente */
-                align-items: center; /* Centra verticalmente */
+                justify-content: center; 
+                align-items: center; 
             }
 
             .navbar-custom .navbar-brand {
                 color: white;
                 font-size: 24px;
-                margin: 0; /* Remueve el margen para asegurar que esté centrado */
+                margin: 0;
             }
 
             .navbar-brand {
@@ -34,10 +34,10 @@
             }
 
             td {
-                max-width: 150px; /* Define un ancho máximo para las celdas */
-                white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-                overflow: hidden; /* Oculta el texto que no cabe en la celda */
-                text-overflow: ellipsis; /* Muestra los puntos suspensivos */
+                max-width: 150px; 
+                white-space: nowrap; 
+                overflow: hidden; 
+                text-overflow: ellipsis; 
             }
         </style>
     </head>
