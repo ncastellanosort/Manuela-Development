@@ -21,7 +21,7 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                -webkit-line-clamp: 5; 
+                -webkit-line-clamp: 5;
                 max-height: 7.5em;
             }
         </style>
