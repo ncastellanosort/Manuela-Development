@@ -27,7 +27,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <%
-                        URL url = new URL("https://newsapi.org/v2/top-headlines?category=health&apiKey=bce53f8467d54ada8f7879210ae35079");
+                        URL url = new URL("https://newsapi.org/v2/top-headlines?q=health&category=health&apiKey=bce53f8467d54ada8f7879210ae35079");
                         HttpURLConnection con = (HttpURLConnection) url.openConnection();
                         con.setRequestMethod("GET");
                         con.setRequestProperty("Content-Type", "application/json");
@@ -49,7 +49,7 @@
 
                             JSONObject data = new JSONObject(String.valueOf(stringBuilder));
 
-                            for (int i = 0; i < 14; i++) {
+                            for (int i = 0; i < data.getInt("totalResults"); i++) {
                                 JSONObject article = data.getJSONArray("articles").getJSONObject(i);
 
                                 if (article.getString("title").equals("[Removed]")
