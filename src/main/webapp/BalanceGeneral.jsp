@@ -1,117 +1,61 @@
-
 <%@page import="com.mycompany.hu.sprint1.Entities.EncuestaDiariaVO"%>
+<%@include file="SidebarPatient.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <style>
-            .navbar-custom {
-                background-color: rgb(55 65 81);
-                display: flex;
-                justify-content: center; 
-                align-items: center;
-            }
-
-            .navbar-custom .navbar-brand {
-                color: white;
-                font-size: 24px;
-                margin: 0; 
-            }
-
-            .center-content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: auto; 
-                text-align: center;
-                margin-bottom: 2vh;
-                margin-top: 10vh; 
-            }
-
-
-
-
-            .centered-div {
-                margin-bottom: 5vh; 
-
-
-            }
-
-            .centered-div h4 {
-                font-weight: 400; 
-            }
-
-            .container{
-                margin-bottom: 5vh;
-
-            }
-
-            .custom-div {
-                border: 1px solid #ccc; 
-                padding: 20px;
-                text-align: center;
-                min-height: 20vh;
-            }
-
-            .btn-custom{
-                background-color: rgb(55 65 81);
-                color: white;
-            }
-
-            .btn-custom:hover{
-                color: white;
-                background-color:  #9A9A9A;
-            }
-
-        </style>
+        <title>Resultado de la encuesta</title>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <nav class="navbar navbar-custom">
-            <div class="container-fluid">
-                <a class="navbar-brand mx-auto" href="#">MPS Paciente</a> 
-            </div>
-        </nav>
-
+    <body class="bg-gray-100">
         <%
             EncuestaDiariaVO encuestaDiariaVO = (EncuestaDiariaVO) request.getSession().getAttribute("encuestaDiariaVO");
         %>
 
-        <div class="center-content">
-            <h1>¡Encuesta realizada!</h1>
-            <h2>30/09/2024</h2>
-        </div>
-
-        <div class="centered-div d-flex justify-content-center">
-            <div class="d-flex gap-3">
-                <h4>Estado de ánimo: <strong><%=encuestaDiariaVO.getEstadoAnimo()%></strong></h4>
-                <h4>Nivel de energía: <strong><%=encuestaDiariaVO.getNivelEnergia()%></strong></h4>
-                <h4>Estrés/ansiedad: <strong><%=encuestaDiariaVO.getEstresAnsiedad()%></strong></h4>
-            </div>
-        </div>
-
-        <div class="container full-height d-flex align-items-center justify-content-center mt-0">
-            <div class="row w-100">
-                <div class="col-md-6 custom-div">
-                    <h2>Balance general</h2>
-                    <p><%=encuestaDiariaVO.getBalanceGeneral()%></p>
+        <div class="sm:ml-64 p-4 flex justify-center">
+            <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+                <div class="bg-gray-700 p-6 text-white text-center">
+                    <h1 class="text-3xl font-bold">¡Encuesta realizada!</h1>
+                    <h2 class="text-xl mt-2">30/09/2024</h2>
                 </div>
-                <div class="col-md-6 custom-div">
-                    <h2>Recomendación</h2>
-                    <p><%=encuestaDiariaVO.getRecomendacion()%></p>
+
+                <div class="p-6">
+                    <div class="flex flex-wrap justify-center gap-4 mb-6">
+                        <div class="bg-gray-700 p-3 rounded-lg">
+                            <h4 class="text-sm text-white font-medium">Estado de ánimo</h4>
+                            <p class="text-lg font-bold text-white"><%=encuestaDiariaVO.getEstadoAnimo()%></p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded-lg">
+                            <h4 class="text-sm text-white font-medium">Nivel de energía</h4>
+                            <p class="text-lg font-bold text-white"><%=encuestaDiariaVO.getNivelEnergia()%></p>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded-lg">
+                            <h4 class="text-sm text-white font-medium">Estrés/ansiedad</h4>
+                            <p class="text-lg font-bold text-white"><%=encuestaDiariaVO.getEstresAnsiedad()%></p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h2 class="text-xl font-semibold mb-2 text-gray-800">Balance general</h2>
+                            <p class="text-gray-600"><%=encuestaDiariaVO.getBalanceGeneral()%></p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h2 class="text-xl font-semibold mb-2 text-gray-800">Recomendación</h2>
+                            <p class="text-gray-600"><%=encuestaDiariaVO.getRecomendacion()%></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <form action="SvEncuestaDiaria" method="GET">
+                            <button type="submit" class="bg-gray-700 text-white py-2 px-6 rounded-lg hover:bg-gray-900">
+                                Ver Encuestas Realizadas
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="text-center">
-            <form action="SvEncuestaDiaria" method="GET">
-                <button type="submit" class="btn btn-custom">Ver Encuestas Realizadas</button>
-            </form>
-
         </div>
     </body>
 </html>
