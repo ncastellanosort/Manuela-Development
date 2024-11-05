@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nicolas
  */
-@WebServlet(name = "SvViewArticle", urlPatterns = {"/SvViewArticle"})
-public class SvViewArticle extends HttpServlet {
+@WebServlet(name = "SvViewArticlePatient", urlPatterns = {"/SvViewArticlePatient"})
+public class SvViewArticlePatient extends HttpServlet {
 
     List<Article> articlesList = ArticlesList.getArticlesList();
     Article articleToDisplay;
@@ -27,6 +27,7 @@ public class SvViewArticle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
     }
 
     @Override
@@ -41,10 +42,10 @@ public class SvViewArticle extends HttpServlet {
             }
         }
 
-        request.getSession().setAttribute("articleToDisplay", articleToDisplay);
+        request.getSession().setAttribute("articleToDisplayPatient", articleToDisplay);
 
-        response.sendRedirect("Articles.jsp");
-
+        response.sendRedirect("ArticlesPatient.jsp");
+        processRequest(request, response);
     }
 
     @Override

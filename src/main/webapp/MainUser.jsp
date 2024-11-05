@@ -1,10 +1,9 @@
-<%@page import="java.util.Scanner"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="java.net.URL"%>
 <%@page import="java.net.HttpURLConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="SidebarMainUser.jsp"%>
-<%@include file="ViewArticles.jsp"%>
+<%@include file="ViewArticlesMainUser.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>

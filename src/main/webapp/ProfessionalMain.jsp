@@ -10,7 +10,7 @@
 <%@page import="java.net.URL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="SidebarProfessional.jsp"%>
-<%@include file="ViewArticles.jsp"%>
+<%@include file="ViewArticlesProfessional.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>

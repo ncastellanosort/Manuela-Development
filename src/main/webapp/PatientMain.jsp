@@ -10,7 +10,7 @@
 <%@page import="org.json.JSONObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="SidebarPatient.jsp"%>
-<%@include file="ViewArticles.jsp"%>
+<%@include file="ViewArticlesPatient.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>

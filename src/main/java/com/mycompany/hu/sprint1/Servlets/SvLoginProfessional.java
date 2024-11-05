@@ -44,8 +44,6 @@ public class SvLoginProfessional extends HttpServlet {
 
         Professional currentProfessional = professionalController.getProfessionalByEmailController(email);
 
-        System.out.println(currentProfessional.getName());
-
         HttpSession httpSession = request.getSession();
 
         if (currentProfessional == null) {
