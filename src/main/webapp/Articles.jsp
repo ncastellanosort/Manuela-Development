@@ -1,52 +1,56 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="SidebarMainUser.jsp"%>
+<%@page import="com.mycompany.hu.sprint1.Entities.Article"%>
 <!DOCTYPE html>
-<html>
+<%@include file="SidebarPatient.jsp"%>
+<html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Articles</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Artículo</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <style>
-            .main-container {
-                margin-top: 60px;
-            }
-
-            .summary-container {
-                background-color: #f2f2f2;
-                padding: 20px;
-                border-radius: 8px;
-                max-width: 700px;
-                text-align: center;
-                margin-top: 25px;
-                font-size: 1rem;
-                color: #333;
-            }
-
-            .nombre-articulo {
-                font-weight: 400;
-                margin-bottom: 0px;
-            }
-
-            h2 {
-                font-weight: 300;
-                margin-bottom: 0px;
-                font-size: 1.8rem;
-            }
-        </style>
     </head>
     <body class="bg-gray-100">
-        <div class="p-4 sm:ml-64">
-            <div class="main-container flex flex-col items-center">
-                <h1 class="nombre-articulo text-2xl font-bold">Nombre del artÃ­culo</h1>
-                <h2 class="nombre-autor text-xl">Nombre del autor</h2>
-                <h2 class="fecha text-md">DD/MM/AAAA</h2>
 
-                <div class="summary-container">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed malesuada nisl, ut tempus sapien. Vestibulum ut convallis eros. Sed et sem sollicitudin felis condimentum vestibulum. Duis efficitur pulvinar ipsum, non scelerisque arcu cursus sed. Etiam auctor elit et dapibus facilisis. Mauris ultrices, tellus vitae commodo efficitur, metus libero interdum ante, at ultricies leo odio at neque. Fusce suscipit nulla at lectus ultrices porttitor. Suspendisse feugiat orci sed elit tempor, a vestibulum tellus efficitur. Nullam fringilla lorem vitae orci rhoncus tristique. Aliquam lobortis massa vitae faucibus vehicula.
+        <%
+            Article article = (Article) request.getSession().getAttribute("articleToDisplay");
+        %>
+
+        <div class="p-4 sm:ml-64 flex justify-center">
+            <div class="w-full lg:w-3/4 xl:w-2/3 bg-white shadow-lg rounded-lg overflow-hidden">
+
+
+                <div class="w-full h-64 overflow-hidden">
+                    <img src="<%= article.getUrlImage()%>" alt="Imagen del artículo" class="w-full h-full object-cover">
                 </div>
 
-                <a href="#" class="mt-3 inline-block px-4 py-2 text-white bg-gray-800 hover:bg-gray-600 rounded-lg">ArtÃ­culo Completo</a>
+
+                <div class="p-6">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4 text-center"><%= article.getTitle()%></h1>
+
+                    <div class="text-gray-600 text-sm mb-4 text-center">
+                        <span class="font-semibold">Autor:</span> <%= article.getAuthor()%>
+                        <span class="mx-2">|</span>
+                        <span class="font-semibold">Publicado:</span> <%= article.getPublishedAt()%>
+                    </div>
+
+                    <div class="text-gray-700 mb-6 text-justify">
+                        <p class="text-lg leading-relaxed">
+                            <%= article.getDescription()%>
+                        </p>
+                    </div>
+
+                    <div class="content-container text-gray-700 bg-gray-50 p-4 rounded-lg shadow-inner leading-relaxed mb-6">
+                        <%= article.getContent()%>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="<%= article.getUrl()%>" target="_blank" class="inline-block px-6 py-3 text-white bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold shadow-md transition">
+                            Leer Artículo Completo
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
+
     </body>
 </html>

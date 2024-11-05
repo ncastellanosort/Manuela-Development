@@ -84,7 +84,7 @@ public class NewsAPI {
                     String publishedAt = data.getJSONArray("articles").getJSONObject(i).getString("publishedAt");
                     String content = data.getJSONArray("articles").getJSONObject(i).getString("content");
 
-                    ArticlesList.getArticlesList().add(new Article(name, title, author, description, urlLink, urlImage, publishedAt, content));
+                    ArticlesList.getArticlesList().add(new Article(name, title, author, description, urlLink, urlImage, publishedAt.substring(0, 10), content));
 
                 }
             }
