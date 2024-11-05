@@ -4,7 +4,6 @@ import com.mycompany.hu.sprint1.Controllers.ControladoraLogica;
 import com.mycompany.hu.sprint1.Controllers.EncuestaDiariaController;
 import com.mycompany.hu.sprint1.Entities.EncuestaDiariaVO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

@@ -18,9 +18,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <%
 
-            // Professional professional = (Professional) request.getSession().getAttribute("newCurrentProfessional");
             Professional professional = (Professional) request.getSession().getAttribute("newCurrentProfessional");
-
             Patient patient = (Patient) request.getSession().getAttribute("currentPatient");
 
         %>

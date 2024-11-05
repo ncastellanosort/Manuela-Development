@@ -7,7 +7,6 @@ package com.mycompany.hu.sprint1.Servlets;
 import com.mycompany.hu.sprint1.Controllers.ProfessionalController;
 import com.mycompany.hu.sprint1.Entities.Professional;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,8 +53,6 @@ public class SvRegisterProfessional extends HttpServlet {
         String confirmPassword = request.getParameter("confirmPassword");
         String description = request.getParameter("description");
 
-        // validar con lo de el rethus si el usuario existe
-        
         if (password.equals(confirmPassword)) {
             professionalController.createProfessionalController(new Professional(identificationType, identificationNumber, speciality, name, lastname, phoneNumber, department, town, houseAddress, professionalAddress, email, password, confirmPassword, description));
             response.sendRedirect("WelcomeProfessional.jsp");

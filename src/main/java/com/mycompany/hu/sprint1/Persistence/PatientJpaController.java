@@ -5,7 +5,6 @@
 package com.mycompany.hu.sprint1.Persistence;
 
 import com.mycompany.hu.sprint1.Entities.Patient;
-import com.mycompany.hu.sprint1.Entities.Professional;
 import com.mycompany.hu.sprint1.Persistence.exceptions.NonexistentEntityException;
 import com.mycompany.hu.sprint1.Persistence.exceptions.PreexistingEntityException;
 import java.io.Serializable;

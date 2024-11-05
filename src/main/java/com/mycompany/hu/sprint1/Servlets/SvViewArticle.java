@@ -45,7 +45,6 @@ public class SvViewArticle extends HttpServlet {
 
         response.sendRedirect("Articles.jsp");
 
-        //processRequest(request, response);
     }
 
     @Override

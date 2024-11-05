@@ -4,6 +4,7 @@
     Author     : Nicolas
 --%>
 
+<%@page import="com.mycompany.hu.sprint1.Tools.ActiveProfessional"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mycompany.hu.sprint1.Entities.Patient"%>
@@ -55,54 +56,32 @@
                         <tbody>
 
                             <%
-                                ProfessionalController professionalController = new ProfessionalController();
                                 Patient currentP = (Patient) request.getSession().getAttribute("currentPatient");
+                                List<Professional> profesionalesActivos = ActiveProfessional.obtenerProfesionalesActivos(currentP);
 
-                                TrastornoController trastornoController = new TrastornoController();
-                                List<Trastorno> trastornos = trastornoController.getTrastornosController();
-
-                                HashSet<Integer> idsNoRepetidos = new HashSet<>();
-
-                                ArrayList<Professional> profesionalesActivos = new ArrayList<>();
-
-                                for (Trastorno trastorno : trastornos) {
-
-                                    if (trastorno.getPatient_id().equals(currentP.getIdentificationNumber())) {
-
-                                        idsNoRepetidos.add(Integer.parseInt(trastorno.getProfessional_id()));
-
-                                    }
-                                }
-
-                                for (Integer id : idsNoRepetidos) {
-                                    Professional p = professionalController.getProfessionalCedula(String.valueOf(id));
-                                    profesionalesActivos.add(p);
-                                }
-
-                                for (Professional p : profesionalesActivos) {
-                                    System.out.println(p.getName());
+                                for (Professional professional : profesionalesActivos) {
 
 
                             %>
 
                             <tr class="odd:bg-white even:bg-gray-50 border-b ">
                                 <th scope="row" class="px-6 py-4">
-                                    <%=p.getName()%>
+                                    <%=professional.getName()%>
                                 </th>
                                 <td class="px-6 py-4">
-                                    <%=p.getLastname()%>
+                                    <%=professional.getLastname()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=p.getSpeciality()%>
+                                    <%=professional.getSpeciality()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=p.getEmail()%>
+                                    <%=professional.getEmail()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=p.getPhoneNumber()%>
+                                    <%=professional.getPhoneNumber()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="SvViewProfessional?id=<%=p.getId()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
+                                    <a href="SvViewProfessional?id=<%=professional.getId()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
                                 </td>
                             </tr>
                             <%                                }%>

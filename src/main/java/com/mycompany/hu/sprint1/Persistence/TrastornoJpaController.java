@@ -21,8 +21,8 @@ import javax.persistence.criteria.Root;
  * @author Nicolas
  */
 public class TrastornoJpaController implements Serializable {
-    
-    public TrastornoJpaController(){
+
+    public TrastornoJpaController() {
         emf = Persistence.createEntityManagerFactory("PersistencePU");
     }
 
@@ -138,5 +138,5 @@ public class TrastornoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

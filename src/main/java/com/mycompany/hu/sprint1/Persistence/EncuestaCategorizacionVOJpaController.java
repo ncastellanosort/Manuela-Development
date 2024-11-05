@@ -21,8 +21,8 @@ import javax.persistence.criteria.Root;
  * @author Nicolas
  */
 public class EncuestaCategorizacionVOJpaController implements Serializable {
-    
-    public EncuestaCategorizacionVOJpaController(){
+
+    public EncuestaCategorizacionVOJpaController() {
         emf = Persistence.createEntityManagerFactory("PersistencePU");
     }
 
@@ -138,5 +138,5 @@ public class EncuestaCategorizacionVOJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

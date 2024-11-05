@@ -9,7 +9,6 @@ import com.mycompany.hu.sprint1.Entities.Calificacion;
 import com.mycompany.hu.sprint1.Entities.Patient;
 import com.mycompany.hu.sprint1.Entities.Professional;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

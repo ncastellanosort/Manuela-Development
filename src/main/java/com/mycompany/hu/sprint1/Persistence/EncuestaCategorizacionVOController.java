@@ -11,9 +11,9 @@ import com.mycompany.hu.sprint1.Entities.EncuestaCategorizacionVO;
  * @author Nicolas
  */
 public class EncuestaCategorizacionVOController {
-    
+
     EncuestaCategorizacionVOJpaController encuestaCategorizacionVOJpaController = new EncuestaCategorizacionVOJpaController();
-    
+
     public void crearEncuestaCategorizacion(EncuestaCategorizacionVO encuestaCategorizacion) {
         encuestaCategorizacionVOJpaController.create(encuestaCategorizacion);
     }

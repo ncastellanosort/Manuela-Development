@@ -79,7 +79,6 @@
 
         <%
             EncuestaDiariaVO encuestaDiariaVO = (EncuestaDiariaVO) request.getSession().getAttribute("encuestaDiariaVO");
-
         %>
 
         <div class="center-content">

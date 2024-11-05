@@ -5,7 +5,6 @@
 package com.mycompany.hu.sprint1.Controllers;
 
 import com.mycompany.hu.sprint1.Entities.Trastorno;
-import com.mycompany.hu.sprint1.Persistence.TrastornoJpaController;
 import com.mycompany.hu.sprint1.Persistence.TrastornoPersistenceController;
 import java.util.List;
 

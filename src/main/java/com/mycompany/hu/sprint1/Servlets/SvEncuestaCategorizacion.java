@@ -62,9 +62,6 @@ public class SvEncuestaCategorizacion extends HttpServlet {
         encuestaCatego.conteoRespuestas();
         encuestaCatego.categorizarArea();
 
-        System.out.println(encuestaCatego.getCategoriaPaciente());
-        // System.out.println(encuestaCatego.getDescripcionTrastorno());
-
         Patient paciente = (Patient) request.getSession().getAttribute("currentPatient");
         int IDcurrentProfessional = 0;
 
@@ -93,12 +90,6 @@ public class SvEncuestaCategorizacion extends HttpServlet {
 
         response.sendRedirect("TrastornosDescription.jsp");
 
-        /*
-        System.out.println("estAnimo: "+ estadoAnimo);
-        System.out.println("sitEstresante: "+ situacionEstresante);
-        System.out.println("relacionComida: "+ relacionComida);
-        System.out.println("patronSueno: "+ patronSueno);
-         */
     }
 
     @Override
