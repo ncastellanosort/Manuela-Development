@@ -49,10 +49,10 @@
                     </div>
 
                     <div class="mt-8">
-                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Source Information</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Fuente</h2>
                         <p id="name" class="text-gray-600 mb-1"><%= article.getAuthor()%></p>
-                        <a id="url" href="<%= article.getUrl()%>" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 mt-2 bg-gray-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition-colors duration-200">
-                            Read original article
+                        <a id="url" href="<%= article.getUrl()%>" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 mt-2 bg-gray-700 text-white font-semibold rounded-lg shadow-md hover:bg-gray-900 focus:outline-none">
+                            Leer el artículo original
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
