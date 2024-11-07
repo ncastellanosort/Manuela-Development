@@ -18,9 +18,6 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
-        <div class="p-4 sm:ml-64">
-
-        </div>
 
     </body>
 </html>

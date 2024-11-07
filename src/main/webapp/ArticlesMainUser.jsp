@@ -14,12 +14,12 @@
             Article article = (Article) request.getSession().getAttribute("articleToDisplayMainUser");
         %>
 
-        <div class="p-4 sm:ml-64 flex justify-center">
+        <div class="max-w-2xl mx-auto mt-20">
             <article class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="<%= article.getUrlImage()%>" alt="Article image" class="w-full h-64 object-cover sm:h-96">
+                <img src="<%= article.getUrlImage()%>" alt="Article image" class="w-full h-40 object-cover sm:h-48">
 
                 <div class="p-6">
-                    <h1 id="title" class="text-3xl font-bold text-gray-900 mb-2"><%= article.getTitle()%></h1>
+                    <h1 id="title" class="text-2xl font-bold text-gray-900 mb-2"><%= article.getTitle()%></h1>
 
                     <div class="flex items-center text-gray-600 text-sm mb-4">
                         <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="mt-8">
-                        <h2 class="text-xl font-semibold text-gray-900 mb-2">Fuente</h2>
+                        <h2 class="text-lg font-semibold text-gray-900 mb-2">Fuente</h2>
                         <p id="name" class="text-gray-600 mb-1"><%= article.getAuthor()%></p>
                         <a id="url" href="<%= article.getUrl()%>" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 mt-2 bg-gray-700 text-white font-semibold rounded-lg shadow-md hover:bg-gray-900 focus:outline-none">
                             Leer el artículo original
@@ -54,5 +54,7 @@
                 </div>
             </article>
         </div>
-    </body>
+
+    </div>
+</body>
 </html>

@@ -47,6 +47,8 @@ public class NewsAPI {
 
     public void getData() throws IOException {
 
+        ArticlesList.getArticlesList().clear();
+
         this.con.connect();
 
         int responseCode = con.getResponseCode();
@@ -68,9 +70,11 @@ public class NewsAPI {
             for (int i = 0; i < data.getInt("totalResults"); i++) {
                 JSONObject article = data.getJSONArray("articles").getJSONObject(i);
 
-                if (article.getString("title").equals("[Removed]")
+                if (data.getJSONArray("articles").getJSONObject(0).getJSONObject("source").getString("name").equals("[Removed]")
+                        || article.getString("title").equals("[Removed]")
                         || !article.has("author") || !article.has("urlToImage")
-                        || article.isNull("author") || article.isNull("urlToImage")) {
+                        || article.isNull("author") || article.isNull("urlToImage")
+                        || article.isNull("content") || article.getString("content").equals("[Removed]")) {
                     continue;
                 }
                 if (article.get("author") instanceof String) {

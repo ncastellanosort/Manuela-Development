@@ -22,7 +22,7 @@
     %>
     <body class="bg-gray-100 overflow-hidden">
 
-        <div class="sm:ml-64 flex flex-col items-center min-h-screen">
+        <div class="flex flex-col items-center min-h-screen">
 
             <div class="flex-grow text-center flex flex-col justify-center items-center">
                 <h2 class="text-2xl font-semibold mb-4">Bienvenido, ¿Cómo quieres iniciar sesión?</h2>
