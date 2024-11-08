@@ -70,7 +70,7 @@ public class NewsAPI {
             for (int i = 0; i < data.getInt("totalResults"); i++) {
                 JSONObject article = data.getJSONArray("articles").getJSONObject(i);
 
-                if (data.getJSONArray("articles").getJSONObject(0).getJSONObject("source").getString("name").equals("[Removed]")
+                if (data.getJSONArray("articles").getJSONObject(i).getJSONObject("source").getString("name").equals("[Removed]")
                         || article.getString("title").equals("[Removed]")
                         || !article.has("author") || !article.has("urlToImage")
                         || article.isNull("author") || article.isNull("urlToImage")
