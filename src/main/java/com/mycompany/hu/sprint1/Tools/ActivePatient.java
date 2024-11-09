@@ -4,7 +4,7 @@
  */
 package com.mycompany.hu.sprint1.Tools;
 
-import com.mycompany.hu.sprint1.Controllers.ProfessionalController;
+import com.mycompany.hu.sprint1.Controllers.PatientController;
 import com.mycompany.hu.sprint1.Controllers.TrastornoController;
 import com.mycompany.hu.sprint1.Entities.Patient;
 import com.mycompany.hu.sprint1.Entities.Professional;
@@ -17,27 +17,28 @@ import java.util.List;
  *
  * @author Nicolas
  */
-public class ActiveProfessional {
+public class ActivePatient {
 
-	private static ProfessionalController professionalController = new ProfessionalController();
+	private static PatientController patientController = new PatientController();
 	private static TrastornoController trastornoController = new TrastornoController();
 
-	public static List<Professional> obtenerProfesionalesActivos(Patient currentP) {
-		List<Trastorno> trastornos = trastornoController.getTrastornosController();
+	public static List<Patient> obtenerPacientesActivos(Professional currentP) {
 		HashSet<Integer> idsNoRepetidos = new HashSet<>();
-		ArrayList<Professional> profesionalesActivos = new ArrayList<>();
+		ArrayList<Patient> pacientesActivos = new ArrayList<>();
+		List<Trastorno> trastornos = trastornoController.getTrastornosController();
 
 		for (Trastorno trastorno : trastornos) {
-			if (trastorno.getPatient_id().equals(currentP.getIdentificationNumber())) {
-				idsNoRepetidos.add(Integer.valueOf(trastorno.getProfessional_id()));
+			if (trastorno.getProfessional_id().equals(currentP.getIdentificationNumber())) {
+				idsNoRepetidos.add(Integer.valueOf(trastorno.getPatient_id()));
 			}
 		}
 
 		for (Integer id : idsNoRepetidos) {
-			Professional p = professionalController.getProfessionalCedula(String.valueOf(id));
-			profesionalesActivos.add(p);
+			Patient p = patientController.getPatientByCedulaController(String.valueOf(id));
+			pacientesActivos.add(p);
 		}
 
-		return profesionalesActivos;
+		return pacientesActivos;
 	}
+
 }

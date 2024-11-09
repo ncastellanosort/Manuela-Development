@@ -1,33 +1,27 @@
 <%-- 
-    Document   : Professionals
-    Created on : Sep 29, 2024, 6:42:24 PM
+    Document   : Patients
+    Created on : Nov 9, 2024, 5:03:54 PM
     Author     : Nicolas
 --%>
 
-<%@page import="com.mycompany.hu.sprint1.Tools.ActiveProfessional"%>
-<%@page import="java.util.HashSet"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="com.mycompany.hu.sprint1.Tools.Tools"%>
+<%@page import="com.mycompany.hu.sprint1.Tools.ActivePatient"%>
 <%@page import="com.mycompany.hu.sprint1.Entities.Patient"%>
-<%@page import="com.mycompany.hu.sprint1.Entities.Trastorno"%>
-<%@page import="com.mycompany.hu.sprint1.Controllers.TrastornoController"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.hu.sprint1.Entities.Professional"%>
-<%@page import="com.mycompany.hu.sprint1.Entities.Professional"%>
-<%@page import="com.mycompany.hu.sprint1.Controllers.ProfessionalController"%>
+<%@include file="SidebarProfessional.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="SidebarPatient.jsp"%>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Profesionales</title>
+        <title>Pacientes</title>
+
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
-
-
-        <div class="p-4 sm:ml-64">
+	<div class="p-4 sm:ml-64">
             <div class="mx-auto max-w-screen-xl flex flex-wrap justify-center">
                 <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
@@ -40,7 +34,10 @@
                                     Apellidos
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Especialidad
+				    Residencia 
+                                </th>
+				<th scope="col" class="px-6 py-3">
+				    Trastorno 
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Email
@@ -56,32 +53,38 @@
                         <tbody>
 
                             <%
-				    Patient currentP = (Patient) request.getSession().getAttribute("currentPatient");
-				    List<Professional> profesionalesActivos = ActiveProfessional.obtenerProfesionalesActivos(currentP);
+				    Professional currentP = (Professional) request.getSession().getAttribute("currentProfessional");
+				    Tools tool = new Tools();
 
-				    for (Professional professional : profesionalesActivos) {
+				    List<Patient> pacientesActivos = ActivePatient.obtenerPacientesActivos(currentP);
+
+				    for (Patient patient : pacientesActivos) {
+					    String tr = tool.getTrastorno(patient);
 
 
                             %>
 
                             <tr class="odd:bg-white even:bg-gray-50 border-b ">
                                 <th scope="row" class="px-6 py-4">
-                                    <%=professional.getName()%>
+                                    <%=patient.getName()%>
                                 </th>
                                 <td class="px-6 py-4">
-                                    <%=professional.getLastname()%>
+                                    <%=patient.getLastname()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=professional.getSpeciality()%>
+                                    <%=patient.getTown()%>
+                                </td>
+				<td class="px-6 py-4">
+                                    <%=tr%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=professional.getEmail()%>
+                                    <%=patient.getEmail()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <%=professional.getPhoneNumber()%>
+                                    <%=patient.getPhoneNumber()%>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="SvViewProfessional?id=<%=professional.getId()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
+                                    <a href="SvViewPatient?id=<%=patient.getIdentificationNumber()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
                                 </td>
                             </tr>
                             <%                                }%>
@@ -90,6 +93,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>

@@ -13,13 +13,21 @@ import com.mycompany.hu.sprint1.Persistence.PatientPersistenceController;
  */
 public class PatientController {
 
-    PatientPersistenceController patientPersistenceController = new PatientPersistenceController();
+	PatientPersistenceController patientPersistenceController = new PatientPersistenceController();
 
-    public void createPatientController(Patient patient) throws Exception {
-        patientPersistenceController.createPatient(patient);
-    }
+	public void createPatientController(Patient patient) throws Exception {
+		patientPersistenceController.createPatient(patient);
+	}
 
-    public Patient getPatientByEmailController(String patient) {
-        return patientPersistenceController.getPatientByEmail(patient);
-    }
+	public Patient getPatientByEmailController(String patient) {
+		return patientPersistenceController.getPatientByEmail(patient);
+	}
+
+	public Patient getPatientByCedulaController(String cedula) {
+		return patientPersistenceController.getPatientByCedula(cedula);
+	}
+
+	public Patient getPatientByIdController(String id) {
+		return patientPersistenceController.getPatientById(id);
+	}
 }

@@ -12,14 +12,21 @@ import com.mycompany.hu.sprint1.Entities.Patient;
  */
 public class PatientPersistenceController {
 
-    PatientJpaController patientJpaController = new PatientJpaController();
+	PatientJpaController patientJpaController = new PatientJpaController();
 
-    public void createPatient(Patient patient) throws Exception {
-        patientJpaController.create(patient);
-    }
+	public void createPatient(Patient patient) throws Exception {
+		patientJpaController.create(patient);
+	}
 
-    public Patient getPatientByEmail(String email) {
-        return patientJpaController.getByEmail(email);
-    }
+	public Patient getPatientByEmail(String email) {
+		return patientJpaController.getByEmail(email);
+	}
 
+	public Patient getPatientByCedula(String cedula) {
+		return patientJpaController.getByCedula(cedula);
+	}
+
+	public Patient getPatientById(String id) {
+		return patientJpaController.findPatient(id);
+	}
 }
