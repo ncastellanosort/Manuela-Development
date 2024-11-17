@@ -21,81 +21,79 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "SvEncuestaCategorizacion", urlPatterns = {"/SvEncuestaCategorizacion"})
 public class SvEncuestaCategorizacion extends HttpServlet {
+	
+	TrastornoController trastornoController = new TrastornoController();
+	ProfessionalController professionalController = new ProfessionalController();
+	
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		processRequest(request, response);
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		processRequest(request, response);
+		
+		EncuestaCategorizacionVO encuestaCatego = new EncuestaCategorizacionVO();
+		
+		int estadoAnimo = Integer.parseInt(request.getParameter("EstadoAnimo"));
+		int situacionEstresante = Integer.parseInt(request.getParameter("SituacionEstresante"));
+		int relacionComida = Integer.parseInt(request.getParameter("RelacionComida"));
+		int patronSueno = Integer.parseInt(request.getParameter("PatronSueno"));
+		
+		int respuestas[] = new int[4];
+		
+		respuestas[0] = estadoAnimo;
+		respuestas[1] = situacionEstresante;
+		respuestas[2] = relacionComida;
+		respuestas[3] = patronSueno;
+		
+		encuestaCatego.setRespuestas(respuestas);
+		
+		encuestaCatego.conteoRespuestas();
+		encuestaCatego.categorizarArea();
+		
+		Patient paciente = (Patient) request.getSession().getAttribute("currentPatient");
+		int IDcurrentProfessional = 0;
+		
+		List<Professional> listaProfessionales = professionalController.getProfessionalsController();
+		
+		for (Professional profesional : listaProfessionales) {
+			if (profesional.getSpeciality().equals(encuestaCatego.getCategoriaPaciente()[0])) {
+				IDcurrentProfessional = Integer.parseInt(profesional.getIdentificationNumber());
+				trastornoController.crearTrastornoController(new Trastorno(paciente.getIdentificationNumber(), profesional.getIdentificationNumber(), encuestaCatego.getCategoriaPaciente()[0], profesional.getSpeciality(), encuestaCatego.getDescripcionTrastorno()));
+			} else {
+				response.sendRedirect("PatientMain.jsp");
+			}
+		}
 
-    TrastornoController trastornoController = new TrastornoController();
-    ProfessionalController professionalController = new ProfessionalController();
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-
-        EncuestaCategorizacionVO encuestaCatego = new EncuestaCategorizacionVO();
-
-        int estadoAnimo = Integer.parseInt(request.getParameter("EstadoAnimo"));
-        int situacionEstresante = Integer.parseInt(request.getParameter("SituacionEstresante"));
-        int relacionComida = Integer.parseInt(request.getParameter("RelacionComida"));
-        int patronSueno = Integer.parseInt(request.getParameter("PatronSueno"));
-
-        int respuestas[] = new int[4];
-
-        respuestas[0] = estadoAnimo;
-        respuestas[1] = situacionEstresante;
-        respuestas[2] = relacionComida;
-        respuestas[3] = patronSueno;
-
-        encuestaCatego.setRespuestas(respuestas);
-
-        encuestaCatego.conteoRespuestas();
-        encuestaCatego.categorizarArea();
-
-        Patient paciente = (Patient) request.getSession().getAttribute("currentPatient");
-        int IDcurrentProfessional = 0;
-
-        List<Professional> listaProfessionales = professionalController.getProfessionalsController();
-
-        for (Professional profesional : listaProfessionales) {
-
-            if (profesional.getSpeciality().equals(encuestaCatego.getCategoriaPaciente())) {
-                IDcurrentProfessional = profesional.getId();
-                trastornoController.crearTrastornoController(new Trastorno(paciente.getIdentificationNumber(), profesional.getIdentificationNumber(), encuestaCatego.getCategoriaPaciente(), profesional.getSpeciality(), encuestaCatego.getDescripcionTrastorno()));
-            } else {
-                response.sendRedirect("PatientMain.jsp");
-            }
-        }
-
-        // EL PROGRAMA SE ESTA CONFUNDIENDO CON 2 DIFERENTES PROFESIONALES, 
-        // CREAR UNA TABLA DONDE ESTAN TODOS LOS PROFESIONALES Y OTRA TABLA DONDE ESTAN SOLOS CON
-        // LOS QUE HA TENIDO SESIONES
-        HttpSession miSesion = request.getSession();
-
-        Professional newCurrentProfessional = professionalController.getProfessionalByIdController(IDcurrentProfessional);
-
-        miSesion.setAttribute("newCurrentProfessional", newCurrentProfessional);
-
-        miSesion.setAttribute("encuestaCatego", encuestaCatego);
-
-        response.sendRedirect("TrastornosDescription.jsp");
-
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-
-    }
-
+		// EL PROGRAMA SE ESTA CONFUNDIENDO CON 2 DIFERENTES PROFESIONALES, 
+		// CREAR UNA TABLA DONDE ESTAN TODOS LOS PROFESIONALES Y OTRA TABLA DONDE ESTAN SOLOS CON
+		// LOS QUE HA TENIDO SESIONES
+		HttpSession miSesion = request.getSession();
+		
+		Professional newCurrentProfessional = professionalController.getProfessionalCedula(String.valueOf(IDcurrentProfessional));
+		
+		miSesion.setAttribute("newCurrentProfessional", newCurrentProfessional);
+		
+		miSesion.setAttribute("encuestaCatego", encuestaCatego);
+		
+		response.sendRedirect("TrastornosDescription.jsp");
+	}
+	
+	@Override
+	public String getServletInfo() {
+		return "Short description";
+		
+	}
+	
 }

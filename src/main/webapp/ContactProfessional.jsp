@@ -9,7 +9,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="SidebarPatient.jsp"%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -18,8 +17,8 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <%
 
-            Professional professional = (Professional) request.getSession().getAttribute("newCurrentProfessional");
-            Patient patient = (Patient) request.getSession().getAttribute("currentPatient");
+		Professional professional = (Professional) request.getSession().getAttribute("newCurrentProfessional");
+		Patient patient = (Patient) request.getSession().getAttribute("currentPatient");
 
         %>
     </head>
@@ -53,12 +52,12 @@
 
 
         <script>
-            document.getElementById('contactWhatsApp').addEventListener('click', function () {
-                var message = document.getElementById('whatsappMessage').value;
-                var url = "https://wa.me/+57<%= professional.getPhoneNumber()%>?text=" + encodeURIComponent(message);
-                this.href = url;
+                document.getElementById('contactWhatsApp').addEventListener('click', function () {
+                    var message = document.getElementById('whatsappMessage').value;
+		    var url = "https://wa.me/+57<%= professional.getPhoneNumber()%>?text=" + encodeURIComponent(message);
+                    this.href = url;
 
-            });
+                });
         </script>
 
 
