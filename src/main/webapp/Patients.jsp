@@ -45,6 +45,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     Telefono
                                 </th>
+				<th scope="col" class="px-6 py-3">
+                                    Estado Sesion
+                                </th>
                                 <th scope="col" class="px-6 py-3">
                                     Ver
                                 </th>
@@ -82,6 +85,12 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <%=patient.getPhoneNumber()%>
+                                </td>
+				<td class="px-6 py-4">
+                                    <select class="border border-gray-300 rounded-md px-2 py-1">
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
                                 </td>
                                 <td class="px-6 py-4">
                                     <a href="SvViewPatient?id=<%=patient.getIdentificationNumber()%>" class="font-medium text-orange-500 hover:text-orange-500 hover:underline">Ver</a>
